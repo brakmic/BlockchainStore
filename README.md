@@ -1,6 +1,6 @@
 ## BlockchainStore
 
-A Smart Contract that runs on Ethereum
+A [Smart Contract](https://github.com/brakmic/BlockchainStore/blob/master/contracts/Store.sol) that runs on Ethereum
 
 ### Retail Test
 
