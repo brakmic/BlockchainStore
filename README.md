@@ -28,7 +28,7 @@ This variable will hold the reference to our Store.
 
 > `var store;`
 
- We receive the needed Store reference asynchronously from Etherium.
+ We receive the needed Store reference asynchronously from Ethereum.
 
 > `Store.deployed().then(d => store = d);`
 
