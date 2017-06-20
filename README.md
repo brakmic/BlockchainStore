@@ -62,4 +62,4 @@ Let's try to check out. :smile:
 
 ### License
 
-MIT
+[MIT](https://github.com/brakmic/BlockchainStore/blob/master/LICENSE)
