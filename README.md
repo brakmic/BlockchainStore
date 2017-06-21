@@ -16,7 +16,7 @@ First, activate a local test-blockchain with `testrpc`. If you don't have it jus
 
 Second, go into the root of this project and execute `truffle compile` and `truffle migrate` (when changing the code during live-testing use `truffle migrate --reset` instead).
 
-Third, jump into truffle's console with `truffle console`. Now you can use the local Blockchain and play with the Store :smile:
+Third, jump into truffle's console with `truffle console`. Now you can use the local Blockchain to play with the Store :smile:
 
 ### Testing Store's Functionality
 
