@@ -1,10 +1,10 @@
 ## BlockchainStore
 
-A [Smart Contract](https://github.com/brakmic/BlockchainStore/blob/master/contracts/Store.sol) that runs on Ethereum
+A [Smart Contract](https://github.com/brakmic/BlockchainStore/blob/master/contracts/Store.sol) that runs on [Ethereum](https://www.ethereum.org/)
 
 ### Retail Test
 
-This smart contract is written in Solidity and mimics a retail store. It supports customer and product registrations. A customer owns a simple cart to collect products before checking out.
+This smart contract is written in [Solidity](https://solidity.readthedocs.io/en/develop/) and mimics a retail store. It supports customer and product registrations. A customer owns a simple cart to collect products before checking out.
 
 ### DApp
 
