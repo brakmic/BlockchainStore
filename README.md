@@ -8,19 +8,19 @@ This smart contract is written in Solidity and mimics a retail store. It support
 
 ### DApp
 
-In this early version there's no proper web interface available and you'll have to use `truffle console` to interact with the contract. In future I'll provide a proper app (maybe written in Angular 4.x as I don't like the default weba-app environment provided by truffle).
+In this early version there's no proper web interface available and you'll have to use `truffle console` to interact with the contract. In future I'll provide a proper app (maybe written in Angular 4.x as I don't like the default web-app environment provided by truffle).
 
 ### Usage
 
 First, activate a local test-blockchain with `testrpc`. If you don't have it just type `npm install -g ethereumjs-testrpc` and let NPM install it for you.
 
-Second, go to where solidity sources are and execute `truffle compile` and `truffle migrate` (when changing the code during live-testing use `truffle migrate --reset`).
+Second, go into the root of this project and execute `truffle compile` and `truffle migrate` (when changing the code during live-testing use `truffle migrate --reset` instead).
 
 Third, jump into truffle's console with `truffle console`. Now you can use the local Blockchain and play with the Store :smile:
 
 ### Testing Store's Functionality
 
-All this is just a test and I'm simply using it to learn Solidity / Ethereum / Blockchain etc.
+I've created this project to learn a bit about Solidity & Ethereum. Expect no sophisticated code here. *And lots of bugs.*
 
 **Here's how I interact with it:**
 
