@@ -44,7 +44,7 @@ We take a T-Shirt with id == 0 and put it into our cart *[the contract will auto
 
 > `store.insertProductIntoCart(0);`
 
-Let's see what's in the cart? Note that here we don't use a **transaction** which'd try to change the state on the blockchain but instead just a *.call()* that simply returns the current values.
+Let's see what's in the cart. Note that here we don't use a **transaction** which'd try to change the state on the blockchain but instead just a *.call()* that simply returns the current values.
 
 > `store.getCart.call();`
 
