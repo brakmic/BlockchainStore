@@ -24,7 +24,7 @@ I've created this project to learn a bit about Solidity & Ethereum. Expect no so
 
 **Here's how I interact with it:**
 
-First, we'll need two addresses: a customer and a seller. By default *testrpc* registers ten Etherium accounts. Therefore we can easily take two of them to play the roles of shop seller and its customer.
+First, we'll need two addresses: a **customer** and a **seller**. By default *testrpc* registers ten Ethereum accounts at our disposal.
 
 *For more information about the namespace web3.eth consult [truffle docs](http://truffleframework.com/docs/) and also Ethereum [JavaScript API](https://github.com/ethereum/wiki/wiki/JavaScript-API).*
 
