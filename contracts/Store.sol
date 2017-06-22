@@ -107,7 +107,7 @@ contract Store {
       return true;
     }
     // Returns a elements describing a product
-    function getProduct(uint id) returns (string prod_name, string prod_desc,
+    function getProduct(uint id) constant returns (string prod_name, string prod_desc,
                                           uint prod_price, uint prod_default_amount) {
        return (products[id].name,
                products[id].description,
@@ -115,6 +115,9 @@ contract Store {
                products[id].default_amount);
     }
     // Inserts a product into the shopping cart (caller address must be a registered customer)
+    // This function returns a boolean and the position of the inserted product.
+    // The positional information can later be used to directly reference the product
+    // within the mapping. Solidity mappings aren't interable.
     function insertProductIntoCart(uint prodId) returns (bool success, uint position) {
       customers[msg.sender].cart.products.push(prodId);
       customers[msg.sender].cart.completeSum += products[prodId].price;
@@ -137,7 +140,7 @@ contract Store {
     }
     // Returns a list of product ids and a complete sum belonging to the current customer
     // The caller address must be a registered customer
-    function getCart() returns (uint[] productIds, uint completeSum) {
+    function getCart() constant returns (uint[] productIds, uint completeSum) {
       Customer customer = customers[msg.sender];
       uint len = customer.cart.products.length;
       uint[] memory ids = new uint[](len);
@@ -147,7 +150,7 @@ contract Store {
       return (ids, customer.cart.completeSum);
     }
     // Returns customer's balance
-    function getBalance() returns (uint _balance) {
+    function getBalance() constant returns (uint _balance) {
       return customers[msg.sender].balance;
     }
     // Invokes a checkout process that'll use the current shopping cart to
