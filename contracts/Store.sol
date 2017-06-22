@@ -2,11 +2,13 @@ pragma solidity ^0.4.8;
 
 // This contract implements a simple store that can interact with
 // registered customers. Every customer has its own shopping cart.
+// @title Contract Store
+// @author Harris Brakmic
 contract Store {
 
     /* Store internals */
     address owner;      // store owner's address
-    string public name; // store name
+    bytes32 public name; // store name
     uint balance;       // store's balance
 
     mapping (address => Customer) customers;
@@ -14,7 +16,9 @@ contract Store {
 
     /* Store Events */
     event CustomerRegistered(address customer);
+    event CustomerRegistrationFailed(address customer);
     event CustomerDeregistered(address customer);
+    event CustomerDeregistrationFailed(address customer);
 
     event ProductRegistered(uint productId);
     event ProductDeregistered(uint productId);
@@ -22,6 +26,7 @@ contract Store {
     event ProductDeregistrationFaled(uint productId);
 
     event CartProductInserted(address customer, uint prodId);
+    event CartProductInsertionFailed(address customer, uint prodId);
     event CartProductRemoved(address customer, uint prodId);
     event CartCheckoutCompleted(address customer, uint paymentSum);
     event CartCheckoutFailed(address customer, uint paymentSum);
@@ -35,7 +40,7 @@ contract Store {
     // balance and a shopping cart
     struct Customer {
         address adr;
-        string name;
+        bytes name;
         uint balance;
         Cart cart;
     }
@@ -54,8 +59,8 @@ contract Store {
     // Amount of items in a single product: @default_amount
     struct Product {
         uint id;
-        string name;
-        string description;
+        bytes32 name;
+        bytes32 description;
         uint price;
         uint default_amount;
     }
@@ -66,7 +71,7 @@ contract Store {
     }
     // Represents a single entry describing a single product [NOT IN USE]
     struct InvoiceLine {
-        string product_id;
+        bytes product_id;
         uint amount;
         uint product_price;
         uint total_price;
@@ -76,9 +81,20 @@ contract Store {
         owner = msg.sender;
         name = "retailtest";
     }
+
+    function changeOwner(address new_owner) onlyStoreOwner
+                                                        returns (bool success) {
+      if (new_owner != owner) {
+        owner = new_owner;
+        return true;
+      }
+      return false;
+    }
+
     // Register a single product (only store owners)
-    function registerProduct(uint id, string name, string description,
-                           uint price, uint default_amount) onlyStoreOwner returns (bool success) {
+    function registerProduct(uint id, bytes32 name, bytes32 description,
+                             uint price, uint default_amount)
+                                         onlyStoreOwner returns (bool success) {
         var product = Product(id, name, description, price, default_amount);
         if (checkProductValidity(product)) {
             products[id] = product;
@@ -88,57 +104,93 @@ contract Store {
         ProductRegistrationFailed(id);
         return false;
     }
+
     // Removes a product from the list (only store owners)
-    function deregisterProduct(uint productId) onlyStoreOwner returns (bool success) {
-      delete products[productId];
-      ProductDeregistered(productId);
-      return true;
+    function deregisterProduct(uint productId) onlyStoreOwner
+                                                        returns (bool success) {
+      Product product = products[productId];
+      if (product.id == productId) {
+        delete products[productId];
+        ProductDeregistered(productId);
+        return true;
+      }
+      ProductDeregistrationFaled(productId);
+      return false;
     }
-    // Registers a new customer (only store owners)
-    function registerCustomer(address _address, string _name, uint _balance) onlyStoreOwner returns (bool success) {
-      customers[_address] = Customer(_address, _name, _balance, Cart(new uint[](0), 0));
-      CustomerRegistered(_address);
-      return true;
-    }
-    // Removes a customer (only store owners)
-    function deregisterCustomer(address customerAddress) onlyStoreOwner returns (bool success) {
-      delete customers[customerAddress];
-      CustomerDeregistered(customerAddress);
-      return true;
-    }
+
     // Returns a elements describing a product
-    function getProduct(uint id) constant returns (string prod_name, string prod_desc,
-                                          uint prod_price, uint prod_default_amount) {
+    function getProduct(uint id) constant returns (bytes32 prod_name,
+                                                   bytes32 prod_desc,
+                                                   uint prod_price,
+                                                   uint prod_default_amount) {
        return (products[id].name,
                products[id].description,
                products[id].price,
                products[id].default_amount);
     }
-    // Inserts a product into the shopping cart (caller address must be a registered customer)
-    // This function returns a boolean and the position of the inserted product.
-    // The positional information can later be used to directly reference the product
-    // within the mapping. Solidity mappings aren't interable.
-    function insertProductIntoCart(uint prodId) returns (bool success, uint position) {
-      customers[msg.sender].cart.products.push(prodId);
-      customers[msg.sender].cart.completeSum += products[prodId].price;
-      CartProductInserted(msg.sender, prodId);
-      return (true, customers[msg.sender].cart.products.length -1);
-    }
-    // Removes a product entry from the shopping cart (caller address must be a registered customer)
-    function removeProductFromCart(uint prodPosition) {
-      uint[] memory new_product_list = new uint[](customers[msg.sender].cart.products.length - 1);
-      var customerProds = customers[msg.sender].cart.products;
-      for (uint i = 0; i < customerProds.length; i++) {
-        if (i != prodPosition) {
-          new_product_list[i] = customerProds[i];
-        } else {
-          customers[msg.sender].cart.completeSum -= products[customerProds[i]].price;
-          CartProductRemoved(msg.sender, customerProds[i]);
-        }
+
+    // Registers a new customer (only store owners)
+    function registerCustomer(address _address, bytes _name, uint _balance)
+                                        onlyStoreOwner returns (bool success) {
+      if (_address != owner) {
+        customers[_address] = Customer(_address, _name, _balance,
+                                                        Cart(new uint[](0), 0));
+        CustomerRegistered(_address);
+        return true;
       }
-      customers[msg.sender].cart.products = new_product_list;
+      CustomerRegistrationFailed(_address);
+      return false;
     }
-    // Returns a list of product ids and a complete sum belonging to the current customer
+
+    // Removes a customer (only store owners)
+    function deregisterCustomer(address customerAddress) onlyStoreOwner
+                                                        returns (bool success) {
+      Customer customer = customers[customerAddress];
+      if (customer.adr != address(0)) {
+        delete customers[customerAddress];
+        CustomerDeregistered(customerAddress);
+        return true;
+      }
+      CustomerDeregistrationFailed(customerAddress);
+      return false;
+    }
+
+    // Inserts a product into the shopping cart (caller must be customer)
+    // This function returns a boolean and the position of the inserted product.
+    // The positional information can later be used to directly reference
+    // the product within the mapping. Solidity mappings aren't interable.
+    function insertProductIntoCart(uint prodId) returns (bool success,
+                                                         uint position) {
+      /*if (msg.sender != owner) {*/
+        customers[msg.sender].cart.products.push(prodId);
+        customers[msg.sender].cart.completeSum += products[prodId].price;
+        CartProductInserted(msg.sender, prodId);
+        return (true, customers[msg.sender].cart.products.length - 1);
+      /*}*/
+      /*CartProductInsertionFailed(msg.sender, prodId);*/
+      /*return (false, 0);*/
+    }
+
+    // Removes a product entry from the shopping cart (caller must be a customer)
+    function removeProductFromCart(uint prodPosition) {
+      if (msg.sender != owner) {
+        uint[] memory new_product_list = new uint[](customers[msg.sender]
+                                                    .cart.products.length - 1);
+        var customerProds = customers[msg.sender].cart.products;
+        for (uint i = 0; i < customerProds.length; i++) {
+          if (i != prodPosition) {
+            new_product_list[i] = customerProds[i];
+          } else {
+            customers[msg.sender].cart.completeSum -=
+                                               products[customerProds[i]].price;
+            CartProductRemoved(msg.sender, customerProds[i]);
+          }
+        }
+        customers[msg.sender].cart.products = new_product_list;
+      }
+    }
+
+    // Returns a list of product ids and a complete sum for current customer
     // The caller address must be a registered customer
     function getCart() constant returns (uint[] productIds, uint completeSum) {
       Customer customer = customers[msg.sender];
@@ -149,10 +201,12 @@ contract Store {
       }
       return (ids, customer.cart.completeSum);
     }
+
     // Returns customer's balance
     function getBalance() constant returns (uint _balance) {
       return customers[msg.sender].balance;
     }
+
     // Invokes a checkout process that'll use the current shopping cart to
     // transfer balances between the current customer and the store
     function checkoutCart() returns (bool success) {
@@ -171,19 +225,24 @@ contract Store {
       CartCheckoutFailed(msg.sender, paymentSum);
       return false;
     }
+
     // Changes the name of the store (only store owners)
-    function renameStoreTo(string new_store_name) onlyStoreOwner returns (bool success) {
-        bytes memory a = bytes(new_store_name);
-        if (a.length != 0) {
+    function renameStoreTo(bytes32 new_store_name) onlyStoreOwner
+                                                        returns (bool success) {
+        if (new_store_name.length != 0 &&
+            new_store_name.length <= 32) {
             name = new_store_name;
             return true;
         }
         return false;
     }
+
     // Checks product validity (private function)
-    function checkProductValidity(Product product) private returns (bool valid) {
+    function checkProductValidity(Product product) private
+                                                          returns (bool valid) {
        return (product.price > 0);
     }
+
     // Payable fallback
     function() payable { }
 }
