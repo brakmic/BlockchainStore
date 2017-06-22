@@ -29,6 +29,7 @@ First, we'll need two addresses: a **customer** and a **seller**. By default *te
 *For more information about the namespace web3.eth consult [truffle docs](http://truffleframework.com/docs/) and also Ethereum [JavaScript API](https://github.com/ethereum/wiki/wiki/JavaScript-API).*
 
 > `var seller = web3.eth.accounts[0];`
+
 > `var customer = web3.eth.accounts[1];`
 
 We also need a reference to our Store.
