@@ -1,6 +1,6 @@
 pragma solidity ^0.4.8;
 
-// This contract implements a simple store to interact with
+// This contract implements a simple store that can interact with
 // registered customers. Every customer has its own shopping cart.
 contract Store {
 
@@ -122,7 +122,7 @@ contract Store {
       return (true, customers[msg.sender].cart.products.length -1);
     }
     // Removes a product entry from the shopping cart (caller address must be a registered customer)
-    function removeProductFromCart(uint prodPosition) returns (bool success) {
+    function removeProductFromCart(uint prodPosition) {
       uint[] memory new_product_list = new uint[](customers[msg.sender].cart.products.length - 1);
       var customerProds = customers[msg.sender].cart.products;
       for (uint i = 0; i < customerProds.length; i++) {
@@ -134,7 +134,6 @@ contract Store {
         }
       }
       customers[msg.sender].cart.products = new_product_list;
-      return true;
     }
     // Returns a list of product ids and a complete sum belonging to the current customer
     // The caller address must be a registered customer
