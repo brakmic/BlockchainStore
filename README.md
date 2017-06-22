@@ -62,7 +62,7 @@ We also want to take care of proper event handling...
 
 ...by registering an event handler that'll siphon them all.
 
-> `allStoreEvents.watch(function(err, res) { console.log("Error: " + err); console.log("Event: " + res.event)});`
+> `allStoreEvents.watch(function(err, res) { console.log("Error: " + err); console.log("Event: " + res.event); });`
 
 Let's try to **check out**. :smile:
 
