@@ -44,7 +44,7 @@ Now we register a new Customer with a certain amount of money. The original sign
 
 > `store.registerCustomer("Harris", 100, {from: seller});`
 
-Our customers will hopefully buy some of our products. Now let's register one by using `registerProduct`. Note that I'm not using `{from: seller}` here. By default **truffle** executes transactions under the first available account address. Only when we explicitely want to have a transaction being executed under a different address, like in the **shopping cart checkout** below, we'll have to provide it. 
+Our customers will hopefully buy some of our products. Now let's register one by using `registerProduct`. Note that I'm not using `{from: seller}` here. By default **truffle** executes transactions under the first available account address. Only when we explicitely want to have a transaction being executed under a different address, like in the **shopping cart checkout** below, we'll have to provide it.
 
 > `store.registerProduct(0, "t-shirt", "lacoste", 40, 1);`
 
@@ -52,15 +52,15 @@ Now, as a customer we take a T-Shirt with id == 0 and put it into our cart.
 
 > `store.insertProductIntoCart(0, {from: customer});`
 
-Let's see what's in the cart. Note that here we don't use a **transaction** here which'd try to change the state on the blockchain. Instead we simply execute a *.call()* that returns the current shopping cart state that comprises of product ids and total sum.
+Let's see what's in the cart. Note that we don't execute a **transaction** here. A transaction would try to change the state on the blockchain that makes no sense in this case. Instead we execute a *.call()* that returns the product ids and total sum.
 
 > `store.getCart.call({from: customer});`
 
-We also want to take care of proper event handling.
+We also want to take care of proper event handling...
 
 > `var allStoreEvents = store.allEvents().watch({}, '');`
 
-A simple event handler will siphon them all.
+...and simple event handler will siphon them all.
 
 > `allStoreEvents.watch(function(err, res) { console.log("Error: " + err); console.log("Event: " + res.event)});`
 
