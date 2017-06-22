@@ -76,12 +76,21 @@ contract Store {
         uint product_price;
         uint total_price;
     }
-    // Default constructor
+    /**
+          @dev Default constructor
+    */
     function Store() {
         owner = msg.sender;
         name = "retailtest";
     }
 
+    /**
+          @dev Changes the address of the store owner
+
+          @param new_owner
+          @return success
+
+    */
     function changeOwner(address new_owner) onlyStoreOwner
                                                         returns (bool success) {
       if (new_owner != owner) {
@@ -91,7 +100,17 @@ contract Store {
       return false;
     }
 
-    // Register a single product (only store owners)
+    /**
+          @dev Register a single product
+
+          @param id
+          @param name
+          @param description
+          @param price
+          @param default_amount
+
+          @return success
+    */
     function registerProduct(uint id, bytes32 name, bytes32 description,
                              uint price, uint default_amount)
                                          onlyStoreOwner returns (bool success) {
@@ -105,7 +124,12 @@ contract Store {
         return false;
     }
 
-    // Removes a product from the list (only store owners)
+    /**
+          @dev Removes a product from the list
+
+          @param productId
+          @return success
+    */
     function deregisterProduct(uint productId) onlyStoreOwner
                                                         returns (bool success) {
       Product product = products[productId];
@@ -118,7 +142,11 @@ contract Store {
       return false;
     }
 
-    // Returns a elements describing a product
+    /**
+          @dev Returns a elements describing a product
+          @param id
+          @return (prod_name, prod_desc, prod_price, prod_default_amount)
+    */
     function getProduct(uint id) constant returns (bytes32 prod_name,
                                                    bytes32 prod_desc,
                                                    uint prod_price,
@@ -129,7 +157,14 @@ contract Store {
                products[id].default_amount);
     }
 
-    // Registers a new customer (only store owners)
+    /**
+          @dev Registers a new customer (only store owners)
+
+          @param _address
+          @param _name
+          @param _balance
+          @return success
+    */
     function registerCustomer(address _address, bytes _name, uint _balance)
                                         onlyStoreOwner returns (bool success) {
       if (_address != owner) {
@@ -142,7 +177,12 @@ contract Store {
       return false;
     }
 
-    // Removes a customer (only store owners)
+    /**
+        @dev Removes a customer (only store owners)
+
+        @param customerAddress
+        @return success
+    */
     function deregisterCustomer(address customerAddress) onlyStoreOwner
                                                         returns (bool success) {
       Customer customer = customers[customerAddress];
@@ -155,10 +195,16 @@ contract Store {
       return false;
     }
 
-    // Inserts a product into the shopping cart (caller must be customer)
-    // This function returns a boolean and the position of the inserted product.
-    // The positional information can later be used to directly reference
-    // the product within the mapping. Solidity mappings aren't interable.
+    /**
+        @dev Inserts a product into the shopping cart.
+            This function returns a boolean and the position of the
+            inserted product.
+            The positional information can later be used to directly reference
+            the product within the mapping. Solidity mappings aren't interable.
+
+        @param prodId
+        @return (success, position)
+    */
     function insertProductIntoCart(uint prodId) returns (bool success,
                                                          uint position) {
       /*if (msg.sender != owner) {*/
@@ -171,7 +217,11 @@ contract Store {
       /*return (false, 0);*/
     }
 
-    // Removes a product entry from the shopping cart (caller must be a customer)
+    /**
+        @dev Removes a product entry from the shopping cart
+
+        @param prodPosition
+    */
     function removeProductFromCart(uint prodPosition) {
       if (msg.sender != owner) {
         uint[] memory new_product_list = new uint[](customers[msg.sender]
@@ -190,8 +240,12 @@ contract Store {
       }
     }
 
-    // Returns a list of product ids and a complete sum for current customer
-    // The caller address must be a registered customer
+    /**
+        @dev Returns a list of product ids and a complete sum.
+        The caller address must be a registered customer.
+
+        @return (productIds, completeSum)
+    */
     function getCart() constant returns (uint[] productIds, uint completeSum) {
       Customer customer = customers[msg.sender];
       uint len = customer.cart.products.length;
@@ -207,8 +261,12 @@ contract Store {
       return customers[msg.sender].balance;
     }
 
-    // Invokes a checkout process that'll use the current shopping cart to
-    // transfer balances between the current customer and the store
+    /**
+        @dev Invokes a checkout process that'll use the current shopping cart to
+        transfer balances between the current customer and the store
+
+        @return success
+    */
     function checkoutCart() returns (bool success) {
       if (msg.sender != owner) {
         Customer customer = customers[msg.sender];
@@ -226,7 +284,12 @@ contract Store {
       return false;
     }
 
-    // Changes the name of the store (only store owners)
+    /**
+          @dev Changes the name of the store
+
+          @param new_store_name
+          @return success
+    */
     function renameStoreTo(bytes32 new_store_name) onlyStoreOwner
                                                         returns (bool success) {
         if (new_store_name.length != 0 &&
@@ -237,12 +300,19 @@ contract Store {
         return false;
     }
 
-    // Checks product validity (private function)
+    /**
+          @dev Checks product validity
+
+          @param product
+          @return valid
+    */
     function checkProductValidity(Product product) private
                                                           returns (bool valid) {
        return (product.price > 0);
     }
 
-    // Payable fallback
+    /**
+          @dev Payable fallback
+    */
     function() payable { }
 }
