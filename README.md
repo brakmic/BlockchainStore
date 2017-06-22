@@ -18,7 +18,7 @@ Second, go into the root of this project and execute `truffle compile` and `truf
 
 Third, jump into truffle's console with `truffle console`. Now you can use the local Blockchain to play with the Store :smile:
 
-### Testing Store's Functionality
+### Interactive Testing
 
 I've created this project to learn a bit about Solidity & Ethereum. Expect no sophisticated code here. *And lots of bugs.*
 
@@ -71,6 +71,13 @@ Let's try to **check out**. :smile:
 Finally, let's see our balance after the checkout.
 
 > `store.getBalance.call({from: customer});`
+
+### Automatic Testing
+
+There are several test cases written in Solidity. Simply enter `truffle test` in your console.
+
+![test_image](https://picload.org/image/rpgcdppi/untitled.png)
+
 
 ### Thanks
 
