@@ -40,7 +40,7 @@ We get this reference asynchronously by executing this snippet.
 
 > `Store.deployed().then(d => store = d);`
 
-Now we register a new Customer with a certain amount of money. If you carefully compare the original definition of `registerCustomer` in Solidity source you'll recognize that the below call looks slightly differently. This is because we want to execute this API from our `seller` account. All available API calls can be expanded by using similar options that let Ethereum know which account should pay for the execution of the code. As you already know the smart contracts doesn't get executed for free. You have to pay the miners for the execution of your code. You can also set the amount of `gas` that can be used. More information regarding these options can be found [here](http://truffleframework.com/docs/getting_started/contracts).
+Now we register a new Customer with a certain amount of money. The original signature of [registerCustomer](https://github.com/brakmic/BlockchainStore/blob/master/contracts/Store.sol#L98) in Solidity differs a bit from the one used below. This is because we want to execute this API from our `seller` account. All available API calls can be expanded by using similar options that let Ethereum know which account should pay for the execution of the code. As you already know the smart contracts doesn't get executed for free. You have to pay the miners for the execution of your code. You can also set the amount of `gas` that can be used. More information regarding these options can be found [here](http://truffleframework.com/docs/getting_started/contracts).
 
 > `store.registerCustomer("Harris", 100, {from: seller});`
 
