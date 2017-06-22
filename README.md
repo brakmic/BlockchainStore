@@ -44,9 +44,7 @@ Now we register a new Customer with a certain amount of money. The original sign
 
 > `store.registerCustomer("Harris", 100, {from: seller});`
 
-Our customers will hopefully buy some of our products. Now let's register one by using `registerProduct` with signature **(ID, NAME, DESC, PRICE, AMOUNT)**
-
-Note that I'm not using `{from: seller}` here. By default **truffle** executes transactions under the first available account address which is in our case also the seller's address. Only when we explicitely want to have a transaction being executed under a different address, like in the **shopping cart checkout** below, we'll have to provide it. Wihtout a proper address the test environment would simply bill the first address which doesn't make any sense as this is the seller itself.
+Our customers will hopefully buy some of our products. Now let's register one by using `registerProduct`. Note that I'm not using `{from: seller}` here. By default **truffle** executes transactions under the first available account address. Only when we explicitely want to have a transaction being executed under a different address, like in the **shopping cart checkout** below, we'll have to provide it. 
 
 > `store.registerProduct(0, "t-shirt", "lacoste", 40, 1);`
 
