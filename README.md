@@ -24,9 +24,7 @@ I've created this project to learn a bit about Solidity & Ethereum. Expect no so
 
 **Here's how I interact with it:**
 
-Get customer and seller addresses. By default *truffle* registers ten Etherium accounts. Therefore we can easily take two of them
-
-to play the roles of shop seller and its customer.
+First, we'll need two addresses: a customer and a seller. By default *testrpc* registers ten Etherium accounts. Therefore we can easily take two of them to play the roles of shop seller and its customer.
 
 *For more information about the namespace web3.eth consult [truffle docs](http://truffleframework.com/docs/) and also Ethereum [JavaScript API](https://github.com/ethereum/wiki/wiki/JavaScript-API).*
 
@@ -79,7 +77,7 @@ Finally, let's see our balance after the checkout.
 
 Many thanks to the nice Ethereum community from [reddit](https://www.reddit.com/r/ethereum/comments/6ik0yb/learning_solidity_a_simple_storesmartcontract/).
 
-Special thanks to [cintix](https://www.reddit.com/user/cintix) for the advice regarding [unbounded iterations](https://www.reddit.com/r/ethereum/comments/6ik0yb/learning_solidity_a_simple_storesmartcontract/dj70kww/). 
+Special thanks to [cintix](https://www.reddit.com/user/cintix) for the advice regarding [unbounded iterations](https://www.reddit.com/r/ethereum/comments/6ik0yb/learning_solidity_a_simple_storesmartcontract/dj70kww/).
 
 ### License
 
