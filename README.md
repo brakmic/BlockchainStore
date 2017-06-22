@@ -60,7 +60,7 @@ We also want to take care of proper event handling...
 
 > `var allStoreEvents = store.allEvents().watch({}, '');`
 
-...and simple event handler will siphon them all.
+...by registering an event handler that'll siphon them all.
 
 > `allStoreEvents.watch(function(err, res) { console.log("Error: " + err); console.log("Event: " + res.event)});`
 
