@@ -24,41 +24,62 @@ I've created this project to learn a bit about Solidity & Ethereum. Expect no so
 
 **Here's how I interact with it:**
 
-This variable will hold the reference to our Store.
+Get customer and seller addresses. By default *truffle* registers ten Etherium accounts. Therefore we can easily take two of them
+
+to play the roles of shop seller and its customer.
+
+*For more information about the namespace web3.eth consult [truffle docs](http://truffleframework.com/docs/) and also Ethereum [JavaScript API](https://github.com/ethereum/wiki/wiki/JavaScript-API).*
+
+> `var seller = web3.eth.accounts[0];`
+> `var customer = web3.eth.accounts[1];`
+
+We also need a reference to our Store.
 
 > `var store;`
 
- We receive the needed Store reference asynchronously from Ethereum.
+We get this reference asynchronously by executing this snippet.
 
 > `Store.deployed().then(d => store = d);`
 
-Now we register a new Customer with a certain amount of money (note the small-caps `store`).
+Now we register a new Customer with a certain amount of money. If you carefully compare the original definition of `registerCustomer` in Solidity source you'll recognize that the below call looks slightly differently. This is because we want to execute this API from our `seller` account. All available API calls can be expanded by using similar options that let Ethereum know which account should pay for the execution of the code. As you already know the smart contracts doesn't get executed for free. You have to pay the miners for the execution of your code. You can also set the amount of `gas` that can be used. More information regarding these options can be found [here](http://truffleframework.com/docs/getting_started/contracts).
 
-> `store.registerCustomer("Harris", 100);`
+> `store.registerCustomer("Harris", 100, {from: seller});`
 
-We also want to have something to sell to our customers: function signature is **(ID, NAME, DESC, PRICE, AMOUNT)**
+Our customers will hopefully buy some of our products. Now let's register one by using `registerProduct` with signature **(ID, NAME, DESC, PRICE, AMOUNT)**
+
+Note that I'm not using `{from: seller}` here. By default **truffle** executes transactions under the first available account address which is in our case also the seller's address. Only when we explicitely want to have a transaction being executed under a different address, like in the **shopping cart checkout** below, we'll have to provide it. Wihtout a proper address the test environment would simply bill the first address which doesn't make any sense as this is the seller itself.
 
 > `store.registerProduct(0, "t-shirt", "lacoste", 40, 1);`
 
-We take a T-Shirt with id == 0 and put it into our cart *[the contract will automatically find the cart for current **msg.sender**]*
+Now, as a customer we take a T-Shirt with id == 0 and put it into our cart.
 
-> `store.insertProductIntoCart(0);`
+> `store.insertProductIntoCart(0, {from: customer});`
 
-Let's see what's in the cart. Note that here we don't use a **transaction** which'd try to change the state on the blockchain but instead just a *.call()* that simply returns the current values.
+Let's see what's in the cart. Note that here we don't use a **transaction** here which'd try to change the state on the blockchain. Instead we simply execute a *.call()* that returns the current shopping cart state that comprises of product ids and total sum.
 
-> `store.getCart.call();`
+> `store.getCart.call({from: customer});`
 
-We take care of proper event handling. In this case we want to be informed about any failed cart checkouts.
+We also want to take care of proper event handling.
 
-> `var checkoutFailed = store.CartCheckoutFailed();`
+> `var allStoreEvents = store.allEvents().watch({}, '');`
 
-Therefore we register a proper event handler.
+A simple event handler will siphon them all.
 
-> `checkoutFailed.watch(function(err, res) { console.log(err); });`
+> `allStoreEvents.watch(function(err, res) { console.log("Error: " + err); console.log("Event: " + res.event)});`
 
-Let's try to check out. :smile:
+Let's try to **check out**. :smile:
 
-> `store.checkoutCart();`
+> `store.checkoutCart({from: customer});`
+
+Finally, let's see our balance after the checkout.
+
+> `store.getBalance.call({from: customer});`
+
+### Thanks
+
+Many thanks to the nice Ethereum community from [reddit](https://www.reddit.com/r/ethereum/comments/6ik0yb/learning_solidity_a_simple_storesmartcontract/).
+
+Special thanks to [cintix](https://www.reddit.com/user/cintix) for the advice regarding [unbounded iterations](https://www.reddit.com/r/ethereum/comments/6ik0yb/learning_solidity_a_simple_storesmartcontract/dj70kww/). 
 
 ### License
 
