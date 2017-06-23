@@ -87,7 +87,7 @@ contract Store {
     /**
           @dev Changes the address of the store owner
 
-          @param new_owner
+          @param  new_owner Address of the new Store Owner
           @return success
 
     */
@@ -103,11 +103,11 @@ contract Store {
     /**
           @dev Register a single product
 
-          @param id
-          @param name
-          @param description
-          @param price
-          @param default_amount
+          @param id Product ID
+          @param name Product Name
+          @param description Product Description
+          @param price Product Price
+          @param default_amount Default amount of items in a single product
 
           @return success
     */
@@ -127,7 +127,7 @@ contract Store {
     /**
           @dev Removes a product from the list
 
-          @param productId
+          @param productId Product ID
           @return success
     */
     function deregisterProduct(uint productId) onlyStoreOwner
@@ -144,7 +144,7 @@ contract Store {
 
     /**
           @dev Returns a elements describing a product
-          @param id
+          @param id Product ID
           @return (prod_name, prod_desc, prod_price, prod_default_amount)
     */
     function getProduct(uint id) constant returns (bytes32 prod_name,
@@ -160,9 +160,9 @@ contract Store {
     /**
           @dev Registers a new customer (only store owners)
 
-          @param _address
-          @param _name
-          @param _balance
+          @param _address Customer's address
+          @param _name Customer's name
+          @param _balance Customer's balance
           @return success
     */
     function registerCustomer(address _address, bytes _name, uint _balance)
@@ -180,18 +180,18 @@ contract Store {
     /**
         @dev Removes a customer (only store owners)
 
-        @param customerAddress
+        @param _address Customer'S address
         @return success
     */
-    function deregisterCustomer(address customerAddress) onlyStoreOwner
+    function deregisterCustomer(address _address) onlyStoreOwner
                                                         returns (bool success) {
-      Customer customer = customers[customerAddress];
+      Customer customer = customers[_address];
       if (customer.adr != address(0)) {
-        delete customers[customerAddress];
-        CustomerDeregistered(customerAddress);
+        delete customers[_address];
+        CustomerDeregistered(_address);
         return true;
       }
-      CustomerDeregistrationFailed(customerAddress);
+      CustomerDeregistrationFailed(_address);
       return false;
     }
 
@@ -202,7 +202,7 @@ contract Store {
             The positional information can later be used to directly reference
             the product within the mapping. Solidity mappings aren't interable.
 
-        @param prodId
+        @param prodId Product ID
         @return (success, position)
     */
     function insertProductIntoCart(uint prodId) returns (bool success,
@@ -220,7 +220,7 @@ contract Store {
     /**
         @dev Removes a product entry from the shopping cart
 
-        @param prodPosition
+        @param prodPosition Product's position in the internal mapping
     */
     function removeProductFromCart(uint prodPosition) {
       if (msg.sender != owner) {
@@ -256,7 +256,9 @@ contract Store {
       return (ids, customer.cart.completeSum);
     }
 
-    // Returns customer's balance
+    /**
+          @dev Returns customer's balance
+    */
     function getBalance() constant returns (uint _balance) {
       return customers[msg.sender].balance;
     }
@@ -287,7 +289,7 @@ contract Store {
     /**
           @dev Changes the name of the store
 
-          @param new_store_name
+          @param new_store_name New store name
           @return success
     */
     function renameStoreTo(bytes32 new_store_name) onlyStoreOwner
@@ -303,7 +305,7 @@ contract Store {
     /**
           @dev Checks product validity
 
-          @param product
+          @param product Product struct
           @return valid
     */
     function checkProductValidity(Product product) private
