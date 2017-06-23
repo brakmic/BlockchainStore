@@ -12,7 +12,7 @@ In this early version there's no proper web interface available and you'll have 
 
 ### ToDo
 
-Besides the web interface I'm planning to implement an [ERC 20](https://theethereum.wiki/w/index.php/ERC20_Token_Standard) compliant token to be used for payments inside the store.
+Besides the web interface I'm planning to implement an [ERC20](https://theethereum.wiki/w/index.php/ERC20_Token_Standard) compliant token to be used for payments inside the store.
 ### API
 
 | Name  | Group  | Signature  | Usage  | Returns |
