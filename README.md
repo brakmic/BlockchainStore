@@ -13,7 +13,7 @@ In this early version there's no proper web interface available and you'll have 
 ### API
 
 | Name  | Group  | Signature  | Usage  | Returns |
-|:-|:-|:-|:-|---|
+|:-|:-|:-|:-|:---|
 | **changeOwner**  | store  | address   | store.changeOwner(new_owner_address)  | **bool**  |
 | **registerProduct**   | store  | uint, bytes32, bytes32, uint, uint   | store.registerProduct(id, name, description, price, default_amount)   | **bool** |
 | **deregisterProduct**   | store   | uint   | store.deregisterProduct(productId)   | **bool**  |
