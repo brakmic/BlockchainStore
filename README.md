@@ -91,7 +91,7 @@ Finally, let's see our balance after the checkout.
 
 ### Automatic Testing
 
-There are several test cases written in Solidity. Simply enter `truffle test` in your console.
+The [tests](https://github.com/brakmic/BlockchainStore/blob/master/test/TestStore.sol#L7) are written in Solidity. Simply enter `truffle test` in your console.
 
 ![test_image](https://picload.org/image/rpgcdppi/untitled.png)
 
