@@ -26,6 +26,7 @@ Besides the web interface I'm planning to implement an [ERC20](https://theethere
 | **insertProductIntoCart**  | customer  | uint  | store.insertProductIntoCart(prodId)  | (**bool** *success*, **uint** *position_in_prod_mapping*)  |
 | **removeProductFromCart**  | customer  | uint  | store.removeProductFromCart(prod_position_in_mapping)  | *fires an event on successful removal* |
 | **getCart**  | customer  |   | store.getCart()  | (**uint[]** *productIds*, **uint** *completeSum*)  |
+| **emptyCart** | customer | | store.emptyCart() | **bool** |
 | **getBalance**  | customer  |   | store.getBalance()  | **uint** |
 | **checkoutCart**  | customer  |   | store.checkoutCart()  | **bool**  |
 | **renameStoreTo**  | store  | bytes32  | store.renameStoreTo(new_store_name)  | **bool**  |
@@ -96,7 +97,7 @@ Finally, let's see our balance after the checkout.
 
 The [tests](https://github.com/brakmic/BlockchainStore/blob/master/test/TestStore.sol#L7) are written in Solidity. Simply enter `truffle test` in your console.
 
-![test_image](https://picload.org/image/rpgpdraw/tests.png)
+![test_image](https://picload.org/image/rpgpolia/tests.png)
 
 
 ### Thanks

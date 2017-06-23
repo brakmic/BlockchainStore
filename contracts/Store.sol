@@ -30,6 +30,7 @@ contract Store {
     event CartProductRemoved(address customer, uint prodId);
     event CartCheckoutCompleted(address customer, uint paymentSum);
     event CartCheckoutFailed(address customer, uint paymentSum);
+    event CartEmptied(address customer);
 
     modifier onlyStoreOwner {
         require(msg.sender == owner);
@@ -257,13 +258,6 @@ contract Store {
     }
 
     /**
-          @dev Returns customer's balance
-    */
-    function getBalance() constant returns (uint _balance) {
-      return customers[msg.sender].balance;
-    }
-
-    /**
         @dev Invokes a checkout process that'll use the current shopping cart to
         transfer balances between the current customer and the store
 
@@ -284,6 +278,31 @@ contract Store {
       }
       CartCheckoutFailed(msg.sender, paymentSum);
       return false;
+    }
+
+    /**
+          @dev Empties the shopping cart
+
+          @return success
+
+    */
+    function emptyCart() returns (bool success) {
+      if (msg.sender != owner) {
+        Customer customer = customers[msg.sender];
+        customer.cart = Cart(new uint[](0), 0);
+        CartEmptied(customer.adr);
+        return true;
+      }
+      return false;
+    }
+
+    /**
+          @dev Returns customer's balance
+
+          @return _balance Customer's balance
+    */
+    function getBalance() constant returns (uint _balance) {
+      return customers[msg.sender].balance;
     }
 
     /**

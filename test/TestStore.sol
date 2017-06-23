@@ -139,4 +139,20 @@ contract TestStore {
 
   }
 
+  function testEmptyCart() {
+    // switch to a dummy-owner because a seller can't be its own customer
+    address customer = address(this);
+    Store _store = new Store();
+    _store.changeOwner(dummy);
+    var _regOk = _store.delegatecall(
+              bytes4(sha3("registerCustomer(address, bytes, uint)")),customer,
+                                                        "DummyCustomer1", 100);
+    var _insertOk = _store.call(
+                              bytes4(sha3("insertProductIntoCart(uint)")), 55);
+    // let's try to check out
+    bool _chkOutOk = _store.call(bytes4(sha3("emptyCart()")));
+    bool allOk = _regOk && _insertOk && _chkOutOk;
+    Assert.isTrue(allOk, "Customer should be able to empty its shopping cart");
+  }
+
 }
