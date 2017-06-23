@@ -10,6 +10,23 @@ This smart contract is written in [Solidity](https://solidity.readthedocs.io/en/
 
 In this early version there's no proper web interface available and you'll have to use `truffle console` to interact with the contract. In future I'll provide a proper app (maybe written in Angular 4.x as I don't like the default web-app environment provided by truffle).
 
+### API
+
+| Name  | Group  | Signature  | Usage  | Returns |
+|:-|:-|:-|:-|---|
+| **changeOwner**  | store  | address   | store.changeOwner(new_orner_address)  | bool  |
+| **registerProduct**   | store  | uint, bytes32, bytes32, uint, uint   | store.registerProduct(id, name, description, price, default_amount)   | bool |
+| **deregisterProduct**   | store   | uint   | store.deregisterProduct(productId)   | bool  |
+| **getProduct**  | customer  | uint  | store.getProduct(productId)  | (bytes32 prod_name, bytes32 prod_desc, uint prod_price, uint prod_default_amount)  |
+| **registerCustomer**  | store   | address, bytes, uint  | store.registerCustomer(customerAddress, customerName, customerBalance)  |  bool  |
+| **deregisterCustomer**  | store   | address   | store.deregisterCustomer(customerAddress)  | bool   |
+| **insertProductIntoCart**  | customer  | uint  | store.insertProductIntoCart(prodId)  | (bool success, uint position_in_prod_mapping)  |
+| **removeProductFromCart**  | user  | uint  | store.removeProductFromCart(prod_position_in_mapping)  | generates an event on successful removal |
+| **getCart**  | customer  |   | store.getCart()  | (uint[] productIds, uint completeSum)  |
+| **getBalance**  | customer  |   | store.getBalance()  | uint |
+| **checkoutCart**  | customer  |   | store.checkoutCart()  | bool  |
+| **renameStoreTo**  | store  | bytes32  | store.renameStoreTo(new_store_name)  | bool  |
+
 ### Usage
 
 First, activate a local test-blockchain with `testrpc`. If you don't have it just type `npm install -g ethereumjs-testrpc` and let NPM install it for you.
