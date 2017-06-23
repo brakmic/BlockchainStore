@@ -10,6 +10,9 @@ This smart contract is written in [Solidity](https://solidity.readthedocs.io/en/
 
 In this early version there's no proper web interface available and you'll have to use `truffle console` to interact with the contract. In future I'll provide a proper app (maybe written in Angular 4.x as I don't like the default web-app environment provided by truffle).
 
+### ToDo
+
+Besides the web interface I'm planning to implement an [ERC 20](https://theethereum.wiki/w/index.php/ERC20_Token_Standard) compliant token to be used for payments inside the store.
 ### API
 
 | Name  | Group  | Signature  | Usage  | Returns |
