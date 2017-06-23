@@ -96,7 +96,7 @@ Finally, let's see our balance after the checkout.
 
 The [tests](https://github.com/brakmic/BlockchainStore/blob/master/test/TestStore.sol#L7) are written in Solidity. Simply enter `truffle test` in your console.
 
-![test_image](https://picload.org/image/rpgpdgca/tests.png)
+![test_image](https://picload.org/image/rpgpdraw/tests.png)
 
 
 ### Thanks

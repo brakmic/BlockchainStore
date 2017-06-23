@@ -105,23 +105,6 @@ contract TestStore {
               "Customer should be able to insert a product into shopping cart");
   }
 
-  function testCheckoutCart() {
-    // switch to a dummy-owner because a seller can't be its own customer
-    address customer = address(this);
-    Store _store = new Store();
-    _store.changeOwner(dummy);
-    var _regOk = _store.delegatecall(
-              bytes4(sha3("registerCustomer(address, bytes, uint)")),customer,
-                                                        "DummyCustomer1", 100);
-    var _insertOk = _store.call(
-                              bytes4(sha3("insertProductIntoCart(uint)")), 55);
-    // let's try to check out
-    bool _chkOutOk = _store.call(bytes4(sha3("checkoutCart()")));
-    bool allOk = _regOk && _insertOk && _chkOutOk;
-    Assert.isTrue(allOk, "Customer should be able to check out shopping cart");
-
-  }
-
   function testRemoveProductFromCart() {
     // switch to a dummy-owner because a seller can't be its own customer
     address customer = address(this);
@@ -137,6 +120,23 @@ contract TestStore {
     bool allOk = _regOk && _removeOk && _insertOk && _cartEmpty;
     Assert.isTrue(allOk,
                "Customer should be able to remove products from shopping cart");
+  }
+
+  function testCheckoutCart() {
+    // switch to a dummy-owner because a seller can't be its own customer
+    address customer = address(this);
+    Store _store = new Store();
+    _store.changeOwner(dummy);
+    var _regOk = _store.delegatecall(
+              bytes4(sha3("registerCustomer(address, bytes, uint)")),customer,
+                                                        "DummyCustomer1", 100);
+    var _insertOk = _store.call(
+                              bytes4(sha3("insertProductIntoCart(uint)")), 55);
+    // let's try to check out
+    bool _chkOutOk = _store.call(bytes4(sha3("checkoutCart()")));
+    bool allOk = _regOk && _insertOk && _chkOutOk;
+    Assert.isTrue(allOk, "Customer should be able to check out shopping cart");
+
   }
 
 }
