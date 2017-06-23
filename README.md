@@ -21,7 +21,7 @@ In this early version there's no proper web interface available and you'll have 
 | **registerCustomer**  | store   | address, bytes, uint  | store.registerCustomer(customerAddress, customerName, customerBalance)  |  **bool**  |
 | **deregisterCustomer**  | store   | address   | store.deregisterCustomer(customerAddress)  | **bool**   |
 | **insertProductIntoCart**  | customer  | uint  | store.insertProductIntoCart(prodId)  | (**bool** *success*, **uint** *position_in_prod_mapping*)  |
-| **removeProductFromCart**  | user  | uint  | store.removeProductFromCart(prod_position_in_mapping)  | *fires an event on successful removal* |
+| **removeProductFromCart**  | customer  | uint  | store.removeProductFromCart(prod_position_in_mapping)  | *fires an event on successful removal* |
 | **getCart**  | customer  |   | store.getCart()  | (**uint[]** *productIds*, **uint** *completeSum*)  |
 | **getBalance**  | customer  |   | store.getBalance()  | **uint** |
 | **checkoutCart**  | customer  |   | store.checkoutCart()  | **bool**  |
