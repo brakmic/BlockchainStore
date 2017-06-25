@@ -32,6 +32,24 @@ Own [Tokens](https://github.com/brakmic/BlockchainStore/blob/master/contracts/Ba
 
 As we all know there are always certain risks to take care of and that's why people try to convince other people to support their business ideas. So, you decide to sell shares of your nascent business to interested parties. You create a proper business info material, for example a web-site that describes your business, how it should look like, what are potential risks etc. You generate a certain amount of tokens based on a price that could be fixed or not. Let's say you sell *1 MyStoreToken* for *0.001 ETH*. Additionally you can determine certain limits and how long your ICO will last. Of course there's no obligation to create all of your tokens in advance. You could easily define a dynamic token supply that depends on incoming ETHs.
 
+Until the first working version gets out you can test the current development in `truffle console`:
+
+Declare a reference variable for deployed token contract.
+
+> `var token;`
+
+Get its reference via JS Promise.
+
+> `BaseStoreToken.deployed().then(d => token = d);`
+
+Display initial token supply.
+
+> `token.initialSupply();`
+
+Transfer 10 tokens from default address to web3.eth.accounts[1]
+
+> `token.transfer(web3.eth.accounts[1], 10);`
+
 ### API
 
 | Name  | Group  | Signature  | Usage  | Returns |
