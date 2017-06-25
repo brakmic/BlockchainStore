@@ -1,9 +1,9 @@
 pragma solidity ^0.4.8;
 
 /**
-    @notice Safe mathematical operations library
+    @notice Safe mathematical operations contract
 */
-library SafeMath {
+contract SafeMath {
 
   /**
         @notice Safely subtract two numbers without overflows

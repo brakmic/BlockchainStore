@@ -1,7 +1,7 @@
 pragma solidity ^0.4.8;
 
-import "./Owned.sol";
-import "./SafeMath.sol";
+import "./Base/Owned.sol";
+import "./Base/SafeMath.sol";
 
 /**
     @notice This contract implements a simple store that can interact with
@@ -9,9 +9,7 @@ import "./SafeMath.sol";
     @title Contract Store
     @author Harris Brakmic
 */
-contract Store is Owned {
-
-    using SafeMath for uint256;
+contract Store is Owned, SafeMath {
 
     /* Store internals */
     bytes32 public store_name; // store name
@@ -204,7 +202,7 @@ contract Store is Owned {
         uint256 prods_prev_len = cust.cart.products.length;
         cust.cart.products.push(prod.id);
         uint256 current_sum = cust.cart.completeSum;
-        cust.cart.completeSum = current_sum.safeAdd(prod.price);
+        cust.cart.completeSum = safeAdd(current_sum, prod.price);
         if (cust.cart.products.length > prods_prev_len) {
           CartProductInserted(msg.sender, id, prod.price, cust.cart.completeSum);
           return (true, cust.cart.products.length - 1);

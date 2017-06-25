@@ -20,7 +20,7 @@ contract Owned {
 
   /**
         @notice Changes the address of the store owner
-        @param  new_owner Address of the new Store Owner
+        @param  new_owner Address of the new owner
   */
   function transferOwnership(address new_owner) onlyOwner {
     if (new_owner != address(0) &&
