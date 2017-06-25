@@ -1,7 +1,7 @@
 pragma solidity ^0.4.10;
 
-import "./Base/ERC20.sol";
-import "./Base/SafeMath.sol";
+import "../Base/ERC20.sol";
+import "../Base/SafeMath.sol";
 
 /**  @title Base Store Token
      @dev Basic Store Token with a fix for short address attacks on ERC20
