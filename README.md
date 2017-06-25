@@ -10,17 +10,17 @@ It is written in [Solidity](https://solidity.readthedocs.io/en/develop/) and rep
 
 In this early version there's no proper web interface available and you'll have to use `truffle console` to interact with the contract. In future I'll provide a web-app written in Angular 4.x. The ultimate goal is to not only produce a web-site but a complete **web-platform** behind it. *Embedding* a real-world business model into something like a DApp implies certain functionalities:
 
-* a database [*you certainly don't want to store your customers personal data on the blockchain*]
+* **database** [*you certainly don't want to store your customers personal data on the blockchain*]
 
-* error handling [*there's no error-handling in Ethereum but your business isn't Ethereum*]
+* **error handling** [*there's no error-handling in Ethereum but your business isn't Ethereum*]
 
-* transactions [*Ethereum transactions aren't your business transactions*]
+* **transactions** [*Ethereum transactions aren't your business transactions*]
 
-* the unavoidable updates [*no code is eternal*]
+* **unavoidable updates** [*no code is eternal*]
 
-* automatic backups [*I'm repeating myself...see databases above*]
+* **automatic backups** [*I'm repeating myself...see databases above*]
 
-* APIs of all kind [*for example: detailed product infos, currency conversions, geo-locations etc.*]
+* **backend APIs** [*for example: detailed product infos, currency conversions, geo-locations etc.*]
 
 ...and many other things.
 
