@@ -6,7 +6,7 @@ import "./Base/SafeMath.sol";
 /**
     @notice This contract implements a simple store that can interact with
     registered customers. Every customer has its own shopping cart.
-    @title Contract Store
+    @title Retail Store Contract
     @author Harris Brakmic
 */
 contract Store is Owned, SafeMath {
@@ -91,7 +91,7 @@ contract Store is Owned, SafeMath {
     */
     function Store() {
         owner = msg.sender;
-        store_name = "retailtest";
+        store_name = "my-retail-store";
         store_balance = 0;
     }
     /**
