@@ -1,7 +1,5 @@
 pragma solidity ^0.4.8;
 
-import "./SafeMath.sol";
-
 /**
       @notice Base Token contract according to ERC20
       https://github.com/ethereum/EIPs/issues/20
