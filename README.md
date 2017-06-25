@@ -1,18 +1,37 @@
-## BlockchainStore
+## Retail Store on Blockchain
 
-A [Smart Contract](https://github.com/brakmic/BlockchainStore/blob/master/contracts/Store.sol) that runs on [Ethereum](https://www.ethereum.org/)
+### About
 
-### Retail Test
+This is a [Smart Contract](https://github.com/brakmic/BlockchainStore/blob/master/contracts/Store.sol) that runs on [Ethereum](https://www.ethereum.org/)
 
-This smart contract is written in [Solidity](https://solidity.readthedocs.io/en/develop/) and mimics a retail store. It supports customer and product registrations. Every registered customer owns a shopping cart to collect products before checking out.
+It is written in [Solidity](https://solidity.readthedocs.io/en/develop/) and represents a retail store. It supports customer and product registrations. Every registered customer owns a shopping cart to collect products before checking out.
 
 ### DApp
 
-In this early version there's no proper web interface available and you'll have to use `truffle console` to interact with the contract. In future I'll provide a proper app (maybe written in Angular 4.x as I don't like the default web-app environment provided by truffle).
+In this early version there's no proper web interface available and you'll have to use `truffle console` to interact with the contract. In future I'll provide a web-app written in Angular 4.x. The ultimate goal is to not only produce a web-site but a complete **web-platform** behind it. *Embedding* a real-world business model into something like a DApp implies certain functionalities:
 
-### ToDo
+* a database [*you certainly don't want to store your customers personal data on the blockchain*]
 
-Besides the web interface I'm planning to implement an [ERC20](https://theethereum.wiki/w/index.php/ERC20_Token_Standard) compliant token to be used for payments inside the store.
+* error handling [*there's no error-handling in Ethereum but your business isn't Ethereum*]
+
+* transactions [*Ethereum transactions aren't your business transactions*]
+
+* the unavoidable updates [*no code is eternal*]
+
+* automatic backups [*I'm repeating myself...see databases above*]
+
+* APIs of all kind [*for example: detailed product infos, currency conversions, geo-locations etc.*]
+
+...and many other things.
+
+Giving customers an interface where they can add or remove products to/from their shopping carts is important but not the end. The whole shopping experience on the UI as well as a sophisticated business logic in the backend must both exist at the same time and support each other. As long as we can't put a whole (non-public & fast) database on Ethereum we'll maintain it somewhere else. To achieve this taks our DApp will have access to public APIs of our backend.
+
+### Tokens
+
+Own [Tokens](https://github.com/brakmic/BlockchainStore/blob/master/contracts/BaseStoreToken.sol#L9) will soon be supported. One could use them to purchase goods in the store or for *initial coin offerings*. For example: you're planning to open a store that deals with certain popular goods but you're unsure how many potential customers are out there. Now you could simply buy some ethers or other coins to finance your store (to pay goods in advance, hire a dev to code a proper Dapp for your customers etc.). Now everything depends on how successful your business will be. You may or may not be able to sustain it.
+
+As we all know there are always certain risks to take care of and that's why people try to convince other people to support their business ideas. So, you decide to sell shares of your nascent business to interested parties. You create a proper business info material, for example a web-site that describes your business, how it should look like, what are potential risks etc. You generate a certain amount of tokens based on a price that could be fixed or not. Let's say you sell *1 MyStoreToken* for *0.001 ETH*. Additionally you can determine certain limits and how long your ICO will last. Of course there's no obligation to create all of your tokens in advance. You could easily define a dynamic token supply that depends on incoming ETHs.
+
 ### API
 
 | Name  | Group  | Signature  | Usage  | Returns |
