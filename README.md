@@ -24,7 +24,7 @@ In this early version there's no proper web interface available and you'll have 
 
 ...and many other things.
 
-Giving customers an interface where they can add or remove products to/from their shopping carts is important but not the end. The whole shopping experience on the UI as well as a sophisticated business logic in the backend must both exist at the same time and support each other. As long as we can't put a whole (non-public & fast) database on Ethereum we'll maintain it somewhere else. To achieve this task our DApp will access public APIs of our backend.
+Giving customers an interface where they can add or remove products to/from their shopping carts is important but not the ultimate goal. The shopping experience on the UI **and** a sophisticated business logic in the backend must both exist to support each other. As long as we can't put a *non-public & fast* database on Ethereum we'll have to maintain it somewhere else. And to achieve this goal our DApp will rely on backend APIs.
 
 ### Tokens
 
