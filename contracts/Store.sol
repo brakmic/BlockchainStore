@@ -93,6 +93,7 @@ contract Store is Owned, SafeMath {
         owner = msg.sender;
         store_name = "my-retail-store";
         store_balance = 0;
+        if (this.balance > 0) throw;
     }
     /**
           @notice Register a single product
