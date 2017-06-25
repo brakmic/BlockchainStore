@@ -17,18 +17,18 @@ Besides the web interface I'm planning to implement an [ERC20](https://theethere
 
 | Name  | Group  | Signature  | Usage  | Returns |
 |:-|:-|:-|:-|:---|
-| **changeOwner**  | store  | address   | store.changeOwner(new_owner_address)  | **bool**  |
-| **registerProduct**   | store  | uint, bytes32, bytes32, uint, uint   | store.registerProduct(id, name, description, price, default_amount)   | **bool** |
-| **deregisterProduct**   | store   | uint   | store.deregisterProduct(productId)   | **bool**  |
-| **getProduct**  | customer  | uint  | store.getProduct(productId)  | (**bytes32** *prod_name*, **bytes32** *prod_desc*, **uint** *prod_price*, **uint** *prod_default_amount*)  |
-| **registerCustomer**  | store   | address, bytes, uint  | store.registerCustomer(customerAddress, customerName, customerBalance)  |  **bool**  |
-| **deregisterCustomer**  | store   | address   | store.deregisterCustomer(customerAddress)  | **bool**   |
-| **insertProductIntoCart**  | customer  | uint  | store.insertProductIntoCart(prodId)  | (**bool** *success*, **uint** *position_in_prod_mapping*)  |
+| **transferOwnership**  | store  | address   | store.changeOwner(new_owner_address)  |   |
+| **registerProduct**   | store  | uint256, bytes32, bytes32, uint, uint   | store.registerProduct(id, name, description, price, default_amount)   | **bool** |
+| **deregisterProduct**   | store   | uint256   | store.deregisterProduct(id)   | **bool**  |
+| **getProduct**  | customer  | uint256  | store.getProduct(id)  | (**bytes32** *name*, **bytes32** *description*, **uint256** *price*, **uint256** *default_amount*)  |
+| **registerCustomer**  | store   | address, bytes32, uint256  | store.registerCustomer(cust_address, cust_name, cust_balance)  |  **bool**  |
+| **deregisterCustomer**  | store   | address   | store.deregisterCustomer(cust_address)  | **bool**   |
+| **insertProductIntoCart**  | customer  | uint256  | store.insertProductIntoCart(prod_id)  | (**bool** *success*, **uint256** *position_in_prod_mapping*)  |
 | **removeProductFromCart**  | customer  | uint  | store.removeProductFromCart(prod_position_in_mapping)  | *fires an event on successful removal* |
-| **getCart**  | customer  |   | store.getCart()  | (**uint[]** *productIds*, **uint** *completeSum*)  |
-| **emptyCart** | customer | | store.emptyCart() | **bool** |
-| **getBalance**  | customer  |   | store.getBalance()  | **uint** |
+| **getCart**  | customer  |   | store.getCart()  | (**uint256[] memory** *product_ids*, **uint256** *completeSum*)  |
 | **checkoutCart**  | customer  |   | store.checkoutCart()  | **bool**  |
+| **emptyCart** | customer | | store.emptyCart() | **bool** |
+| **getBalance**  | customer  |   | store.getBalance()  | **uint256** |
 | **renameStoreTo**  | store  | bytes32  | store.renameStoreTo(new_store_name)  | **bool**  |
 
 ### Usage
