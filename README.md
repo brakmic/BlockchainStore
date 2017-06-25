@@ -36,19 +36,19 @@ As we all know there are always certain risks to take care of and that's why peo
 
 | Name  | Group  | Signature  | Usage  | Returns |
 |:-|:-|:-|:-|:---|
-| **transferOwnership**  | store  | address   | store.transferOwnership(new_owner_address)  |   |
-| **registerProduct**   | store  | uint256, bytes32, bytes32, uint, uint   | store.registerProduct(id, name, description, price, default_amount)   | **bool** |
-| **deregisterProduct**   | store   | uint256   | store.deregisterProduct(id)   | **bool**  |
+| **transferOwnership**  | owner  | address   | store.transferOwnership(new_owner_address)  |   |
+| **registerProduct**   | owner  | uint256, bytes32, bytes32, uint, uint   | store.registerProduct(id, name, description, price, default_amount)   | **bool** |
+| **deregisterProduct**   | owner   | uint256   | store.deregisterProduct(id)   | **bool**  |
 | **getProduct**  | customer  | uint256  | store.getProduct(id)  | (**bytes32** *name*, **bytes32** *description*, **uint256** *price*, **uint256** *default_amount*)  |
-| **registerCustomer**  | store   | address, bytes32, uint256  | store.registerCustomer(cust_address, cust_name, cust_balance)  |  **bool**  |
-| **deregisterCustomer**  | store   | address   | store.deregisterCustomer(cust_address)  | **bool**   |
+| **registerCustomer**  | owner   | address, bytes32, uint256  | store.registerCustomer(cust_address, cust_name, cust_balance)  |  **bool**  |
+| **deregisterCustomer**  | owner   | address   | store.deregisterCustomer(cust_address)  | **bool**   |
 | **insertProductIntoCart**  | customer  | uint256  | store.insertProductIntoCart(prod_id)  | (**bool** *success*, **uint256** *position_in_prod_mapping*)  |
 | **removeProductFromCart**  | customer  | uint  | store.removeProductFromCart(prod_position_in_mapping)  | *fires an event on successful removal* |
 | **getCart**  | customer  |   | store.getCart()  | (**uint256[] memory** *product_ids*, **uint256** *completeSum*)  |
 | **checkoutCart**  | customer  |   | store.checkoutCart()  | **bool**  |
 | **emptyCart** | customer | | store.emptyCart() | **bool** |
 | **getBalance**  | customer  |   | store.getBalance()  | **uint256** |
-| **renameStoreTo**  | store  | bytes32  | store.renameStoreTo(new_store_name)  | **bool**  |
+| **renameStoreTo**  | owner  | bytes32  | store.renameStoreTo(new_store_name)  | **bool**  |
 
 ### Usage
 
