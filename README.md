@@ -17,7 +17,7 @@ Besides the web interface I'm planning to implement an [ERC20](https://theethere
 
 | Name  | Group  | Signature  | Usage  | Returns |
 |:-|:-|:-|:-|:---|
-| **transferOwnership**  | store  | address   | store.changeOwner(new_owner_address)  |   |
+| **transferOwnership**  | store  | address   | store.transferOwnership(new_owner_address)  |   |
 | **registerProduct**   | store  | uint256, bytes32, bytes32, uint, uint   | store.registerProduct(id, name, description, price, default_amount)   | **bool** |
 | **deregisterProduct**   | store   | uint256   | store.deregisterProduct(id)   | **bool**  |
 | **getProduct**  | customer  | uint256  | store.getProduct(id)  | (**bytes32** *name*, **bytes32** *description*, **uint256** *price*, **uint256** *default_amount*)  |
