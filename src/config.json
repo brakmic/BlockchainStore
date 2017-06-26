@@ -1,0 +1,25 @@
+{
+  "server"       : "",
+  "baseUrl"      : "",
+  "logonUrlPath" : "",
+  "protocol"     : "https",
+  "debug"        : false,
+  "language"     : "de",
+  "availableLanguages": [
+    "de",
+    "en",
+    "it",
+    "fr"
+  ],
+  "logon": {
+    "username": "",
+    "password": ""
+  },
+  "translations": "assets/i18n",
+  "translationApi": "",
+  "helpUrl": "",
+  "insertLogonData": false,
+  "traceRoutes": false,
+  "useHashRouting": false,
+  "useHttpExService": false
+}

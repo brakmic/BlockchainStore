@@ -1,0 +1,434 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.row {
+  margin: 0!important;
+}
+
+.col {
+  margin: 0!important;
+}
+
+html, body {
+    min-height: 100%;
+    height:auto;
+}
+
+/*==================================================
+=            Bootstrap 3 Media Queries             =
+==================================================*/
+
+/*==========  Mobile First Method  ==========*/
+
+/* Custom, iPhone Retina */
+@media only screen and (min-width : 320px) {
+   .mainmenu-container {
+    border-top: .2em solid;
+    height: 350px;
+    min-height: 350px;
+    max-height: 350px;
+    position: relative;
+    top: 0;
+    bottom: 0;
+    overflow: auto;
+  }
+  .bcs-work-area {
+    height: 180px;
+  }
+  .blue-area {
+    height: 180px;
+    max-width: 100%;
+    background-color: #0083E4;
+  }
+  .bcs-top-nav {
+    padding-top: .5em;
+  }
+
+  .main-menu-entry {
+    max-height: 32px;
+  }
+
+  .main-menu-entry > img {
+      height: 32px;
+      width: 32px;
+      float: left;
+  }
+
+  .main-menu-entry > div {
+      padding-left: 20px;
+      vertical-align: top;
+      line-height: 35px;
+      font-size: 12px;
+      float: left;
+  }
+  .sub-menu {
+      overflow: auto;
+      min-height: 250px;
+      max-height: 250px;
+  }
+  .sub-menu-entry {
+    max-height: 24px;
+  }
+
+  .sub-menu-entry > img {
+      height: 24px;
+      width: 24px;
+      float: left;
+  }
+
+  .sub-menu-entry > div {
+      padding-left: 10px;
+      vertical-align: top;
+      line-height: 25px;
+      font-size: 10px;
+      float: left;
+  }
+
+  .dx-widget > .dx-datagrid {
+    width: 85%;
+  }
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (min-width : 480px) {
+
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px) {
+  .mainmenu-container {
+    border-top: .2em solid;
+    height: 300px;
+    min-height: 300px;
+    max-height: 300px;
+    position: relative;
+    top: 0;
+    bottom: 0;
+    overflow: auto;
+  }
+  .bcs-work-area {
+    height: 500px;
+  }
+  .blue-area {
+    height: 400px;
+    max-width: 100%;
+    background-color: #0083E4;
+  }
+  .bcs-top-nav {
+    padding-top: .5em;
+  }
+
+  .main-menu-entry {
+    max-height: 32px;
+  }
+
+  .main-menu-entry > img {
+      height: 32px;
+      width: 32px;
+      float: left;
+  }
+
+  .main-menu-entry > div {
+      padding-left: 20px;
+      vertical-align: top;
+      line-height: 35px;
+      font-size: 12px;
+      float: left;
+  }
+  .sub-menu {
+      overflow: auto;
+      min-height: 250px;
+      max-height: 250px;
+  }
+  .sub-menu-entry {
+    max-height: 24px;
+  }
+
+  .sub-menu-entry > img {
+      height: 24px;
+      width: 24px;
+      float: left;
+  }
+
+  .sub-menu-entry > div {
+      padding-left: 10px;
+      vertical-align: top;
+      line-height: 25px;
+      font-size: 10px;
+      float: left;
+  }
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width : 992px) {
+  .mainmenu-container {
+    border-top: .2em solid;
+    height: 340px;
+    min-height: 350px;
+    max-height: 350px;
+    position: relative;
+    top: 0;
+    bottom: 0;
+    overflow: auto;
+  }
+  .bcs-work-area {
+    height: 650px;
+  }
+  .blue-area {
+    height: 600px;
+    max-width: 100%;
+    background-color: #0083E4;
+  }
+  .bcs-top-nav {
+    padding-top: .5em;
+  }
+
+  .main-menu-entry {
+    max-height: 32px;
+  }
+
+  .main-menu-entry > img {
+      height: 32px;
+      width: 32px;
+      float: left;
+  }
+
+  .main-menu-entry > div {
+      padding-left: 20px;
+      vertical-align: top;
+      line-height: 35px;
+      font-size: 14px;
+      float: left;
+  }
+  .sub-menu {
+      overflow: auto;
+      min-height: 250px;
+      max-height: 250px;
+  }
+  .sub-menu-entry {
+    max-height: 24px;
+  }
+
+  .sub-menu-entry > img {
+      height: 24px;
+      width: 24px;
+      float: left;
+  }
+
+  .sub-menu-entry > div {
+      padding-left: 10px;
+      vertical-align: top;
+      line-height: 25px;
+      font-size: 12px;
+      float: left;
+  }
+
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 1200px) {
+  .mainmenu-container {
+    border-top: .2em solid;
+    height: 400px;
+    min-height: 400px;
+    max-height: 400px;
+    position: relative;
+    top: 0;
+    bottom: 0;
+    overflow: auto;
+  }
+  .bcs-work-area {
+    height: 600px;
+  }
+  .blue-area {
+    height: 500px;
+    max-width: 100%;
+    background-color: #0083E4;
+  }
+  .bcs-top-nav {
+    padding-top: .5em;
+  }
+
+  .main-menu-entry {
+    max-height: 32px;
+  }
+
+  .main-menu-entry > img {
+      height: 32px;
+      width: 32px;
+      float: left;
+  }
+
+  .main-menu-entry > div {
+      padding-left: 20px;
+      vertical-align: top;
+      line-height: 35px;
+      font-size: 14px;
+      float: left;
+  }
+  .sub-menu {
+      overflow: auto;
+      min-height: 250px;
+      max-height: 250px;
+  }
+  .sub-menu-entry {
+    max-height: 24px;
+  }
+
+  .sub-menu-entry > img {
+      height: 24px;
+      width: 24px;
+      float: left;
+  }
+
+  .sub-menu-entry > div {
+      padding-left: 10px;
+      vertical-align: top;
+      line-height: 25px;
+      font-size: 12px;
+      float: left;
+  }
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 2000px) {
+  .mainmenu-container {
+    border-top: .2em solid;
+    height: 750px;
+    min-height: 750px;
+    max-height: 750px;
+    position: relative;
+    top: 0;
+    bottom: 0;
+    overflow: auto;
+  }
+  .bcs-work-area {
+    height: 1000px;
+  }
+  .blue-area {
+    height: 900px;
+    max-width: 100%;
+    background-color: #0083E4;
+  }
+  .bcs-top-nav {
+    padding-top: .5em;
+  }
+
+  .main-menu-entry {
+    max-height: 32px;
+  }
+
+  .main-menu-entry > img {
+      height: 32px;
+      width: 32px;
+      float: left;
+  }
+
+  .main-menu-entry > div {
+      padding-left: 20px;
+      vertical-align: top;
+      line-height: 35px;
+      font-size: 16px;
+      float: left;
+  }
+  .sub-menu {
+      overflow: auto;
+      min-height: 350px;
+      max-height: 350px;
+  }
+  .sub-menu-entry {
+    max-height: 24px;
+  }
+
+  .sub-menu-entry > img {
+      height: 24px;
+      width: 24px;
+      float: left;
+  }
+
+  .sub-menu-entry > div {
+      padding-left: 10px;
+      vertical-align: top;
+      line-height: 25px;
+      font-size: 14px;
+      float: left;
+  }
+}
+
+.bcs-module-area {
+  padding: .1em;
+  background-color: #0083E4;
+  color: white;
+  height: 100%;
+}
+
+.bcs-element-label {
+  padding-left: 1em;
+  padding-top: .5em;
+  padding-bottom: .5em;
+}
+
+.auto-align-div {
+  float: left;
+  padding: .2em;
+}
+
+.loading-spinner {
+  position: fixed;
+  z-index: 999;
+  height: 2em;
+  width: 2em;
+  overflow: show;
+  margin: auto;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.bcs-sidebar-block {
+  background-color: white;
+}
+
+.main-container {
+  min-height: 100%;
+  height: 100%;
+  margin: 0 auto -40px;
+
+}
+
+.loading-text {
+    padding-bottom: 1em;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 18px;
+}
+
+.row-spacing {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.inout-component-style {
+  padding-top: 1em;
+}
+
+.topmenu-entry {
+  padding-top: .5em;
+  padding-left: .5em;
+  padding-right: .5em;
+}
+
+.top-leftmenu-entry {
+  padding: 3px;
+}
+
+.bcs-top-navbar {
+  background-color: #0072C5;
+}
+
+.bcs-work-area {
+  margin-left: 0;
+  margin-right: 0;
+}

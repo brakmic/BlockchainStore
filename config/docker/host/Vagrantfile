@@ -1,0 +1,30 @@
+VAGRANTFILE_API_VERSION = '2'
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+	config.vm.provision "docker"
+	# Friendly name of this host VM
+	config.vm.hostname = 'bcsvm'
+	# Forward HTTP 
+	config.vm.network :forwarded_port, host: 3001, guest: 3001
+	config.vm.network :forwarded_port, host: 3002, guest: 3002
+	# Private network for host-vm <=> docker communication  
+	config.vm.network :private_network, ip: "10.10.10.29"
+	# config.vm.network "public_network"
+	
+	config.vm.synced_folder '.', '/vagrant', disabled: true
+	config.vm.synced_folder 'C:/Projects/bcs.Retail.Web/retailweb/dist', '/dist'
+
+	config.ssh.insert_key = true
+
+	config.vm.provision "shell", inline:
+	'ps aux | grep \'sshd:\' | awk \'{print $2}\' | xargs kill'
+		
+	config.vm.define "bcsvm"
+	config.vm.box = "ubuntu/xenial64"
+	# Skip checking for an updated Vagrant box
+	config.vm.box_check_update = false
+		
+	config.vm.provider :virtualbox do |vbox|
+		vbox.name = "bcsvm"
+	end 
+end
