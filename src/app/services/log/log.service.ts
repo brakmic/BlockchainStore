@@ -12,12 +12,12 @@ const bows = require('platform/helpers/bows-alt');
 export class LogService {
   constructor() {
     if (window) {
-      (<any> window.localStorage).debug = true;
+      (window.localStorage as any).debug = true;
     }
   }
   public log(entry: ILogEntry): void {
     if (!entry || !entry.content) return;
-    let log = undefined;
+    let log;
     if (entry.component) {
       log = bows(entry.component);
     } else {
@@ -42,6 +42,7 @@ export class LogService {
 
   public logTable(content: any, propkeys?: string[], component?: string): void {
     component ? console.log(component) : _.noop();
-    !_.isNil(propkeys) ? (<any> console).table(content, propkeys) : (<any> console).table(content);
+    !_.isNil(propkeys) ? (console as any).table(content, propkeys) : 
+                                                (console as any).table(content);
   }
 }

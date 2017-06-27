@@ -5,6 +5,6 @@ const APP_RESOLVERS: any[] = [
     DataResolver
 ];
 export {
-    DataResolver,
+    // DataResolver,
     APP_RESOLVERS
 };

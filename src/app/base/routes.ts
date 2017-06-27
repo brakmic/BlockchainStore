@@ -27,21 +27,21 @@ export class PreloadSelectedModulesStrategy implements PreloadingStrategy {
 }
 
 export const APP_ROUTES: Routes = [
-  {
-    path: 'access-denied',
-    loadChildren: 'app/components#AccessDeniedModule',
-    data: {
-      preload: true
-    }
-  },
-  {
-    path: 'logon',
-    loadChildren: 'app/components#LogonModule'
-  },
-  {
-    path: 'logout',
-    loadChildren: 'app/components#LogoutModule'
-  },
+  // {
+  //   path: 'access-denied',
+  //   loadChildren: 'app/components#AccessDeniedModule',
+  //   data: {
+  //     preload: true
+  //   }
+  // },
+  // {
+  //   path: 'logon',
+  //   loadChildren: 'app/components#LogonModule'
+  // },
+  // {
+  //   path: 'logout',
+  //   loadChildren: 'app/components#LogoutModule'
+  // },
   {
     path: '',
     pathMatch: 'full',
@@ -49,7 +49,7 @@ export const APP_ROUTES: Routes = [
   },
   {
     path: '',
-    loadChildren: 'app/components#MainModule',
+    loadChildren: 'app/components#BcsModule',
     data: {
       preload: true
     }

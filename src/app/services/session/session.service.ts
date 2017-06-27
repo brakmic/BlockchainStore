@@ -13,6 +13,7 @@ import 'rxjs/add/observable/throw';
 // State Management with Redux
 import '@ngrx/core/add/operator/select';
 import { Store } from '@ngrx/store';
+import { IAppState } from 'stores';
 
 @Injectable()
 export class SessionService {
@@ -27,7 +28,7 @@ export class SessionService {
    */
   constructor(private http: Http,
               private logService: LogService,
-              private store: Store<any>) {
+              private store: Store<IAppState>) {
   }
   public getSessionStatus(): Observable<any> {
     return this.store.select((store) => store.session);

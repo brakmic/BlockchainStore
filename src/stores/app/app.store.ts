@@ -50,6 +50,7 @@ import { routeReducer } from 'app';
 export interface IAppState {
     // route: fromBcs.IRouteState;
     route: any;
+    session: any;
 }
 
 /**

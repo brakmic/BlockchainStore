@@ -1,3 +1,1 @@
-export {
-
-};
+export * from './image.api';

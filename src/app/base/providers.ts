@@ -2,6 +2,7 @@ import { IConfig } from 'app/interfaces';
 const config: IConfig = require('config.json');
 
 import { NgModule, ApplicationRef } from '@angular/core';
+// import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule, Http, Request, RequestOptionsArgs,
@@ -9,6 +10,7 @@ import { HttpModule, Http, Request, RequestOptionsArgs,
          ConnectionBackend, Headers } from '@angular/http';
 import { RouterModule, PreloadAllModules, NoPreloading } from '@angular/router';
 import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
+// import { AppPipesModule } from 'app/pipes';
 
 import { ENV_PROVIDERS, requestOptions } from 'platform';
 /*
@@ -92,25 +94,26 @@ const BCS_SERVICES = [
   AppState,
   LogService,
   SessionService,
-  ThemingService,
-  ...BROWSER_PROVIDERS,
-  ...EXTRA_PROVIDERS,
-  ...TRANSLATION_SERVICES,
-  ThemeConfigProvider,
-  ThemeConfig,
-  ThemePreloader,
-  ThemeSpinner,
-  ImageLoaderService
+  // ThemingService,
+  // ...BROWSER_PROVIDERS,
+  // ...EXTRA_PROVIDERS,
+  // ...TRANSLATION_SERVICES,
+  // ThemeConfigProvider,
+  // ThemeConfig,
+  // ThemePreloader,
+  // ThemeSpinner,
+  // ImageLoaderService
 ];
 
 // Application wide providers
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
   ...BCS_SERVICES,
-  ...AUTH_PROVIDERS,
+  // ...AUTH_PROVIDERS,
   ...BCS_VALIDATORS,
   requestOptions,
-  PreloadSelectedModulesStrategy
+  PreloadSelectedModulesStrategy,
+  // AppPipesModule
 ];
 
 const BCS_DIRECTIVES = [
@@ -129,15 +132,15 @@ const BCS_EFFECTS = [
 ];
 
 const ENV_MODULES = [
-    HttpModule,
     BrowserModule,
+    HttpModule,
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot(APP_ROUTES,
                             {
                               useHash: config.useHashRouting,
                               enableTracing: config.traceRoutes,
-                              // errorHandler: error => console.log(`[ROUTER ERROR] : ${error}`),
+                              errorHandler: (error) => console.log(`[ROUTER ERROR] : ${error}`),
                               preloadingStrategy: PreloadAllModules
                             })
 ];

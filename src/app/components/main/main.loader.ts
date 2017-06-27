@@ -1,5 +1,7 @@
 // speed up the initial styles loading
 // import 'assets/styles/default/initial.scss';
-export {
+const data: any = [];
 
+export {
+    data
 };

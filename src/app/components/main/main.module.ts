@@ -2,13 +2,12 @@ import { NgModule, ApplicationRef,
          NO_ERRORS_SCHEMA,
          CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpModule, Http } from '@angular/http';
-import { RouterModule } from '@angular/router';
+// import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+// import { HttpModule, Http } from '@angular/http';
+// import { RouterModule } from '@angular/router';
 import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
 import { AppState, LogService } from 'app/services';
 import { StoreType } from 'app/types';
-import { AppPipesModule } from 'app/pipes';
 
 // State management
 import { StoreModule } from '@ngrx/store';
@@ -36,9 +35,10 @@ import { MainComponent } from './main.component';
     BCS_EFFECTS,
   ],
   imports: [          // import Angular's & own modules
-    ENV_MODULES,
-    VENDOR_MODULES,
-    AppPipesModule,
+    ...ENV_MODULES,
+    ...VENDOR_MODULES,
+    // BrowserModule,
+    // AppPipesModule,
     StoreModule.provideStore(AppReducer),
     EffectsModule.run(RouteEffects),
   ],

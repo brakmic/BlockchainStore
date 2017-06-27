@@ -3,11 +3,12 @@ import { Component, ViewEncapsulation,
          OnInit, OnChanges, OnDestroy,
          AfterViewInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { LogService } from 'app/services';
+import { LogService, SessionService } from 'app/services';
 // RxJS
 import { Observable } from 'rxjs/Observable';
 import { Observer } from 'rxjs/Observer';
 import { Subscription } from 'rxjs/Subscription';
+import { IAppState } from 'stores';
 import * as _ from 'lodash';
 
 const domready = require('domready');
@@ -15,7 +16,7 @@ const domready = require('domready');
 // const style = './app.component.scss';
 
 @Component({
-  selector: 'bcs-main',
+  selector: 'bcs-root',
   templateUrl: './main.component.html',
   styleUrls: [
     './main.component.scss'
@@ -26,7 +27,7 @@ export class MainComponent implements OnInit,
                                       OnChanges,
                                       OnDestroy,
                                       AfterViewInit {
-  private serviceWorker: ServiceWorker;
+
   private sessionSubscription: Subscription;
   /**
    * App constructor
@@ -38,7 +39,7 @@ export class MainComponent implements OnInit,
   constructor(private router: Router,
               private route: ActivatedRoute,
               private logService: LogService,
-            /*private sessionService: SessionService*/) {
+              private sessionService: SessionService) {
   }
 
   public ngOnInit() {

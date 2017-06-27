@@ -1,6 +1,6 @@
 import { IStyleConfigItem } from './IStyleConfigItem';
 
 export interface IStyleConfig {
-    activeTheme?: string;
+    activeTheme?: any;
     [index: string]: IStyleConfigItem;
 }

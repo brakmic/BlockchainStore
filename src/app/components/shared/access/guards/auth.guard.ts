@@ -14,6 +14,7 @@ import { BCS } from 'app/helpers';
 import { Observable } from 'rxjs/Observable';
 import { Observer } from 'rxjs/Observer';
 import { Subscription } from 'rxjs/Subscription';
+import { IAppState } from 'stores';
 import * as _ from 'lodash';
 
 @Injectable()
@@ -22,13 +23,13 @@ export class AuthGuard implements CanActivate {
   private sessionSubscription: Subscription;
   private loggedOn: boolean = false;
 
-  constructor(private store: Store<any>,
+  constructor(private store: Store<IAppState>,
               private router: Router,
               private logService: LogService,
               private sessionService: SessionService)  {
-      this.sessionSubscription = this.getSessionState()
-                                     .subscribe((state) => this.loggedOn = !_.isNil(state) &&
-                                                                         !_.isNil(state.UserData));
+      // this.sessionSubscription = this.getSessionState()
+      //                                .subscribe((state) => this.loggedOn = !_.isNil(state) &&
+      //                                                    !_.isNil(state.UserData));
   }
 
   public canActivate(next:  ActivatedRouteSnapshot,
@@ -37,6 +38,7 @@ export class AuthGuard implements CanActivate {
   }
 
   private getSessionState(): Observable<any> {
-    return this.sessionService.getSessionStatus();
+    // return this.sessionService.getSessionStatus();
+    return Observable.from(null);
   }
 }

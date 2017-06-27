@@ -5,6 +5,6 @@ const AUTH_PROVIDERS: any[] = [
                             ];
 
 export {
-    AuthGuard,
+    // AuthGuard,
     AUTH_PROVIDERS
 };
