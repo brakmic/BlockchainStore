@@ -143,6 +143,14 @@ Many thanks to the nice Ethereum community from [reddit](https://www.reddit.com/
 
 Special thanks to [cintix](https://www.reddit.com/user/cintix) for the advice regarding [unbounded iterations](https://www.reddit.com/r/ethereum/comments/6ik0yb/learning_solidity_a_simple_storesmartcontract/dj70kww/).
 
+### Support this project
+
+If you're feeling generous and thankful, you can send a few bits. :)
+
+**ETH**: 0xba90D2B4c097b3A4146a5e2cfDB28B1828B442d7
+
+Thank you!
+
 ### License
 
 [MIT](https://github.com/brakmic/BlockchainStore/blob/master/LICENSE)
