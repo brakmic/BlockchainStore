@@ -1,0 +1,8 @@
+﻿.child-controller-content {
+    height: 100%;
+}
+
+.popup-container .dx-popup-content,
+.popover-container .dx-popup-content {
+    padding: 0;
+}

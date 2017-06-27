@@ -46,6 +46,7 @@ contract Store is Owned, SafeMath {
         uint256 balance;
         Cart cart;
     }
+
     /**
         @notice A shopping cart contains an array of product ids: @products
         and a sum of product prices: @completeSum
@@ -56,6 +57,7 @@ contract Store is Owned, SafeMath {
       uint256[] products;
       uint256 completeSum;
     }
+
     /**
         @notice Represents a product:
         Product id: @id
@@ -70,6 +72,7 @@ contract Store is Owned, SafeMath {
         uint256 price;
         uint256 default_amount;
     }
+
     /**
         @notice Represents a receipt [NOT IN USE]
     */
@@ -77,6 +80,7 @@ contract Store is Owned, SafeMath {
         InvoiceLine[] lines;
         address customer_address;
     }
+
     /**
         @notice Represents a single entry describing a single product [NOT IN USE]
     */
@@ -86,6 +90,7 @@ contract Store is Owned, SafeMath {
         uint256 product_price;
         uint256 total_price;
     }
+
     /**
         @notice Default constructor
     */
@@ -95,6 +100,14 @@ contract Store is Owned, SafeMath {
         store_balance = 0;
         if (this.balance > 0) throw;
     }
+
+    /**
+          @notice Payable fallback
+    */
+    function() payable {
+
+    }
+
     /**
           @notice Register a single product
           @param id Product ID
@@ -131,21 +144,6 @@ contract Store is Owned, SafeMath {
       }
       ProductDeregistrationFaled(id);
       return false;
-    }
-
-    /**
-          @notice Returns a elements describing a product
-          @param id Product ID
-          @return (name, description, price, default_amount)
-    */
-    function getProduct(uint256 id) constant returns (bytes32 name,
-                                                      bytes32 description,
-                                                      uint256 price,
-                                                      uint256 default_amount) {
-       return (products[id].name,
-               products[id].description,
-               products[id].price,
-               products[id].default_amount);
     }
 
     /**
@@ -235,22 +233,6 @@ contract Store is Owned, SafeMath {
     }
 
     /**
-        @notice Returns a list of product ids and a complete sum.
-        The caller address must be a registered customer.
-        @return (product_ids, complete_sum)
-    */
-    function getCart() constant returns (uint256[] memory product_ids,
-                                                          uint256 complete_sum) {
-      Customer customer = customers[msg.sender];
-      uint256 len = customer.cart.products.length;
-      uint256[] memory ids = new uint256[](len);
-      for (uint256 i = 0; i < len; i++) {
-        ids[i] = products[i].id;
-      }
-      return (ids, customer.cart.completeSum);
-    }
-
-    /**
         @notice Invokes a checkout process that'll use the current shopping cart to
         transfer balances between the current customer and the store
         @return success
@@ -285,6 +267,52 @@ contract Store is Owned, SafeMath {
     }
 
     /**
+          @notice Changes the name of the store
+          @param new_store_name New store name
+          @return success
+    */
+    function renameStoreTo(bytes32 new_store_name) onlyOwner
+                                                        returns (bool success) {
+        if (new_store_name.length != 0 &&
+            new_store_name.length <= 32) {
+            store_name = new_store_name;
+            return true;
+        }
+        return false;
+    }
+
+    /**
+          @notice Returns a elements describing a product
+          @param id Product ID
+          @return (name, description, price, default_amount)
+    */
+    function getProduct(uint256 id) constant returns (bytes32 name,
+                                                      bytes32 description,
+                                                      uint256 price,
+                                                      uint256 default_amount) {
+       return (products[id].name,
+               products[id].description,
+               products[id].price,
+               products[id].default_amount);
+    }
+
+    /**
+        @notice Returns a list of product ids and a complete sum.
+        The caller address must be a registered customer.
+        @return (product_ids, complete_sum)
+    */
+    function getCart() constant returns (uint256[] memory product_ids,
+                                                          uint256 complete_sum) {
+      Customer customer = customers[msg.sender];
+      uint256 len = customer.cart.products.length;
+      uint256[] memory ids = new uint256[](len);
+      for (uint256 i = 0; i < len; i++) {
+        ids[i] = products[i].id;
+      }
+      return (ids, customer.cart.completeSum);
+    }
+
+    /**
           @notice Returns customer's balance
           @return _balance Customer's balance
     */
@@ -301,21 +329,6 @@ contract Store is Owned, SafeMath {
     }
 
     /**
-          @notice Changes the name of the store
-          @param new_store_name New store name
-          @return success
-    */
-    function renameStoreTo(bytes32 new_store_name) onlyOwner
-                                                        returns (bool success) {
-        if (new_store_name.length != 0 &&
-            new_store_name.length <= 32) {
-            store_name = new_store_name;
-            return true;
-        }
-        return false;
-    }
-
-    /**
           @notice Checks product validity
           @param product Product struct
           @return valid
@@ -324,9 +337,4 @@ contract Store is Owned, SafeMath {
                                                           returns (bool valid) {
        return (product.price > 0);
     }
-
-    /**
-          @notice Payable fallback
-    */
-    function() payable { }
 }

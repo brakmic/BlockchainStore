@@ -1,0 +1,15 @@
+{
+  "name": "Retail Store on Blockchain",
+  "short_name": "BlockchainStore",
+  "icons": [
+    {
+      "src": "bcs.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/index.html",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait"
+}

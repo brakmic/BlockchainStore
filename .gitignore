@@ -59,10 +59,3 @@ typings/
 
 
 build/
-# temporarily ignore until bignumber.js issue gets solved
-src/
-config/
-tsconfig.*
-tslint.*
-package.*
-package-lock.*
