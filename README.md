@@ -145,11 +145,11 @@ Special thanks to [cintix](https://www.reddit.com/user/cintix) for the advice re
 
 ### Support this project
 
-If you're feeling generous and thankful, you can send a few bits. :)
+If you like this project please do consider a small donation.
 
 **ETH**: 0xba90D2B4c097b3A4146a5e2cfDB28B1828B442d7
 
-Thank you!
+Thank you! :purple_heart:
 
 ### License
 
