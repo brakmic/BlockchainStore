@@ -147,7 +147,7 @@ Special thanks to [cintix](https://www.reddit.com/user/cintix) for the advice re
 
 If you like this project please do consider a small donation.
 
-**ETH**: 0xba90D2B4c097b3A4146a5e2cfDB28B1828B442d7
+**ETH**: 0x9C275a7a42eD4abf8FD54F2Db66e6A1306527942
 
 Thank you! :purple_heart:
 
