@@ -16,6 +16,7 @@
       "app/*": [ "app/*" ],
       "apis/*": [ "app/apis/*" ],
       "base/*": [ "app/base/*" ],
+      "build/*": [ "build/*" ],
       "common/*": [ "app/common/*" ],
       "components/*": [ "app/components/*" ],
       "enums/*": [ "app/enums/*" ],

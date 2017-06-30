@@ -29,7 +29,7 @@ const HashedModuleIdsPlugin = require('webpack/lib/HashedModuleIdsPlugin')
 const ENV = process.env.NODE_ENV = process.env.ENV = 'production';
 const HOST = process.env.HOST || 'localhost';
 const PORT = process.env.PORT || 3000;
-const TITLE = process.env.TITLE || 'Retail.Web';
+const TITLE = process.env.TITLE || 'BlockchainStore';
 const METADATA = webpackMerge(commonConfig({ env: ENV }), {
   host: HOST,
   port: PORT,

@@ -26,6 +26,14 @@ In this early version there's no proper web interface available and you'll have 
 
 Giving customers an interface where they can add or remove products to/from their shopping carts is important but not the ultimate goal. The shopping experience on the UI **and** a sophisticated business logic in the backend must both exist to support each other. As long as we can't put a *non-public & fast* database on Ethereum we'll have to maintain it somewhere else. And to achieve this goal our DApp will rely on backend APIs.
 
+![store_demo](https://picload.org/image/rpdildil/store_demo.png)
+
+Currently, a simple demo to play around with [web3](https://github.com/ethereum/wiki/wiki/JavaScript-API)-API is available. To get the above demo working please follow these steps:
+
+* Compile the contracts with `truffle compile`
+* Then move the newly created *build* folder to *src*
+* Now you can boot the app via `npm run start:hmr`
+
 ### Tokens
 
 Store [Tokens](https://github.com/brakmic/BlockchainStore/blob/master/contracts/Tokens/BaseStoreToken.sol#L9) will soon be supported. One could use them to purchase goods in the store or for *initial coin offerings*. For example: you're planning to open a store that deals with certain popular goods but you're unsure how many potential customers are out there. Now you could simply buy some ethers or other coins to finance your store (to pay goods in advance, hire a dev to code a proper Dapp for your customers etc.). Now everything depends on how successful your business will be. You may or may not be able to sustain it.
