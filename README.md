@@ -157,6 +157,8 @@ If you like this project please consider making a small donation.
 
 **ETH**: 0x9C275a7a42eD4abf8FD54F2Db66e6A1306527942
 
+![project_qrcode](https://picload.org/image/rpdprrca/project_qrcode.png)
+
 Thank you! :purple_heart:
 
 ### List of used images
