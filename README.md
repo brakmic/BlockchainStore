@@ -6,9 +6,11 @@ This is a [Smart Contract](https://github.com/brakmic/BlockchainStore/blob/maste
 
 It is written in [Solidity](https://solidity.readthedocs.io/en/develop/) and represents a retail store. It supports customer and product registrations. Every registered customer owns a shopping cart to collect products before checking out.
 
-### DApp
+### Dapp
 
-In this early version there's no proper web interface available and you'll have to use `truffle console` to interact with the contract. In future I'll provide a web-app written in Angular 4.x. The ultimate goal is to not only produce a web-site but a complete **web-platform** behind it. *Embedding* a real-world business model into something like a DApp implies certain functionalities:
+![store_demo](https://picload.org/image/rpdildil/store_demo.png)
+
+In this early version there's no proper web interface available and you'll have to use `truffle console` to access the contract. In future I'll provide a web-app written in Angular 4.x. The ultimate goal is to not only produce a web-site but a complete **web-platform** behind it. *Embedding* a real-world business model into something like a DApp implies certain functionalities:
 
 * **database** [*you certainly don't want to store your customers personal data on the blockchain*]
 
@@ -24,9 +26,7 @@ In this early version there's no proper web interface available and you'll have 
 
 ...and many other things.
 
-Giving customers an interface where they can add or remove products to/from their shopping carts is important but not the ultimate goal. The shopping experience on the UI **and** a sophisticated business logic in the backend must both exist to support each other. As long as we can't put a *non-public & fast* database on Ethereum we'll have to maintain it somewhere else. And to achieve this goal our DApp will rely on backend APIs.
-
-![store_demo](https://picload.org/image/rpdildil/store_demo.png)
+Giving customers an interface where they can add or remove products to/from their shopping carts is important but not the ultimate goal. The shopping experience on the UI **and** a sophisticated business logic in the backend must both exist to support each other. As long as we can't put a *non-public & fast* database on Ethereum we'll have to maintain it somewhere else. And to achieve this goal our Dapp will rely on backend APIs.
 
 Currently, a simple demo to play around with [web3](https://github.com/ethereum/wiki/wiki/JavaScript-API)-API is available. To get the above demo working please follow these steps:
 
