@@ -151,16 +151,6 @@ Many thanks to the nice Ethereum community from [reddit](https://www.reddit.com/
 
 Special thanks to [cintix](https://www.reddit.com/user/cintix) for the advice regarding [unbounded iterations](https://www.reddit.com/r/ethereum/comments/6ik0yb/learning_solidity_a_simple_storesmartcontract/dj70kww/).
 
-### Support this project
-
-If you like this project please consider making a small donation.
-
-**ETH**: 0x9C275a7a42eD4abf8FD54F2Db66e6A1306527942
-
-![project_qrcode](https://picload.org/image/rpdprrca/project_qrcode.png)
-
-Thank you! :purple_heart:
-
 ### List of used images
 
 [Cash Register](https://pixabay.com/en/cash-register-register-retail-sale-576181/) - CC0 Public Domain
