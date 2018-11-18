@@ -8,8 +8,6 @@ It is written in [Solidity](https://solidity.readthedocs.io/en/develop/) and rep
 
 ### Dapp
 
-![store_demo](https://picload.org/image/rpdildil/store_demo.png)
-
 In this early version there's no proper web interface available and you'll have to use `truffle console` to access the contract. In future I'll provide a web-app written in Angular 4.x. The ultimate goal is to not only produce a web-site but a complete **web-platform** behind it. *Embedding* a real-world business model into something like a DApp implies certain functionalities:
 
 * **database** [*you certainly don't want to store your customers personal data on the blockchain*]
@@ -141,8 +139,6 @@ Finally, let's see our balance after the checkout.
 ### Automatic Testing
 
 The [tests](https://github.com/brakmic/BlockchainStore/blob/master/test/TestStore.sol#L7) are written in Solidity. Simply enter `truffle test` in your console.
-
-![test_image](https://picload.org/image/rprdrdla/testing.png)
 
 
 ### Thanks
